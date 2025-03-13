@@ -10,7 +10,7 @@ app.use(cors({
 }));
 
 // Use the DB_URI from the .env file
-var mongoString = process.env.DB_URI || 'mongodb://127.0.0.1:27017';
+var mongoString = process.env.DB_URI || 'mongodb+srv://rehan2113:rehanCluster@786@myvideolibrary.yskdj.mongodb.net/?retryWrites=true&w=majority&appName=myVideoLibrary';
 let database;
 
 // Connect to MongoDB using the DB_URI from the .env
