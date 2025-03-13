@@ -16,9 +16,7 @@ let database;
 // Connect to MongoDB using the DB_URI from the .env
 async function connectDB() {
     try {
-        const client = await mongoClient.connect(mongoString,{
-  ssl: true,
-});
+        const client = await mongoClient.connect(mongoString);
         console.log("Connected to database");
         database = client.db("myVideoLibrary");
     } catch (err) {
