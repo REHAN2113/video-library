@@ -17,7 +17,7 @@ let database;
 mongoClient.connect(mongoString)
     .then(client => {
         console.log("Connected to database");
-        database = client.db("videodb");
+        database = client.db("myvideolibrary");
     })
     .catch(err => {
         console.error("Error connecting to the database", err);
