@@ -10,18 +10,21 @@ app.use(cors({
 }));
 
 // Use the DB_URI from the .env file
-var mongoString = process.env.DB_URI || 'mongodb+srv://rehan2113:rehanCluster@786@myvideolibrary.yskdj.mongodb.net/?retryWrites=true&w=majority&appName=myVideoLibrary';
+var mongoString = process.env.DB_URI || 'mongodb+srv://rehan2113:rehanCluster%40786@myvideolibrary.yskdj.mongodb.net/?retryWrites=true&w=majority&appName=myVideoLibrary';
 let database;
 
 // Connect to MongoDB using the DB_URI from the .env
-mongoClient.connect(mongoString)
-    .then(client => {
+async function connectDB() {
+    try {
+        const client = await mongoClient.connect(mongoString);
         console.log("Connected to database");
         database = client.db("myVideoLibrary");
-    })
-    .catch(err => {
+    } catch (err) {
         console.error("Error connecting to the database", err);
-    });
+    }
+}
+
+connectDB();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -504,4 +507,9 @@ app.delete("/delete-video/:videoid", (req, res) => {
 
 app.listen(port, () => {
    
+});
+process.on('SIGINT', () => {
+    console.log("Closing server and database connection...");
+    mongoClient.close();
+    process.exit();
 });
