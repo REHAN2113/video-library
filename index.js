@@ -14,7 +14,7 @@ var mongoString = process.env.DB_URI || 'mongodb+srv://rehan2113:rehanCluster@78
 let database;
 
 // Connect to MongoDB using the DB_URI from the .env
-mongoClient.connect(mongoString, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoClient.connect(mongoString)
     .then(client => {
         console.log("Connected to database");
         database = client.db("videodb");
