@@ -18,9 +18,6 @@ async function connectDB() {
     try {
         const client = await mongoClient.connect(mongoString,{
   ssl: true,
-  sslValidate: false,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
 });
         console.log("Connected to database");
         database = client.db("myVideoLibrary");
