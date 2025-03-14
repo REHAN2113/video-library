@@ -508,8 +508,4 @@ app.delete("/delete-video/:videoid", (req, res) => {
 app.listen(port, () => {
    
 });
-process.on('SIGINT', () => {
-    console.log("Closing server and database connection...");
-    mongoClient.close();
-    process.exit();
-});
+
